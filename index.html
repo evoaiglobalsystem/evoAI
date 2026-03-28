@@ -585,8 +585,13 @@ var obs=new IntersectionObserver(function(entries){
 
 
 document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+}
+</script>
+
+<script>
 function handleSubmit(e){
   e.preventDefault();
+  
   var btn=document.getElementById('submitBtn');
   btn.innerHTML='<span>Sending...</span>';
   btn.disabled=true;
@@ -623,7 +628,6 @@ function handleSubmit(e){
     btn.innerHTML='<span>Send Message</span><span>&#8594;</span>';
     btn.disabled=false;
   });
-}
 }
 </script>
 </body>
