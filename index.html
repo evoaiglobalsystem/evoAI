@@ -553,11 +553,13 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 
 <script>
+function toggleNav(){navLinks.classList.toggle('open');}
+
 document.addEventListener('DOMContentLoaded',function(){
 document.body.classList.add('js-ready');
 var hamburger=document.querySelector('.hamburger');
 var navLinks=document.getElementById('navLinks');
-function toggleNav(){navLinks.classList.toggle('open');}
+
 if(hamburger){hamburger.addEventListener('click',toggleNav);hamburger.addEventListener('touchend',function(e){e.preventDefault();toggleNav();});}
 document.querySelectorAll('.nav-links a').forEach(function(a){
   a.addEventListener('click',function(){navLinks.classList.remove('open')});
