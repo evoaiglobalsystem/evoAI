@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Block sensitive paths
+Disallow: /admin/
+Disallow: /login/
+Disallow: /private/
+Disallow: /tmp/
+
+# Allow important resources
+Allow: /assets/
+Allow: /images/
+
+# Sitemap
+Sitemap: https://evoaiglobal.ai/sitemap.xml
