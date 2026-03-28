@@ -474,24 +474,23 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
 		  </div>
 	  </div>
       <form class="contact-form reveal d2" id="contactForm" onsubmit="handleSubmit(event)">
-        <input type="hidden" name="access_key" value="60dccdba-8429-42dc-a452-0d2b872372b8">
         <div class="form-row">
           <div class="form-group">
             <label for="fname">First name</label>
-            <input type="text" id="fname" name="fname" placeholder="John" required>
+            <input type="text" id="fname" placeholder="John" required>
           </div>
           <div class="form-group">
             <label for="lname">Last name</label>
-            <input type="text" id="lname" name="lname" placeholder="Smith" required>
+            <input type="text" id="lname"  placeholder="Smith" required>
           </div>
         </div>
         <div class="form-group">
           <label for="email">Email address</label>
-          <input type="email" id="email" name="email" placeholder="john@company.com" required>
+          <input type="email" id="email" placeholder="john@company.com" required>
         </div>
         <div class="form-group">
           <label for="company">Company</label>
-          <input type="text" id="company" name="company" placeholder="Your company name">
+          <input type="text" id="company" placeholder="Your company name">
         </div>
         <div class="form-group">
           <label for="service">Interested in</label>
@@ -505,7 +504,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
         </div>
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea id="message" name="message" rows="4" placeholder="Tell us about your project, timeline, and goals..." required></textarea>
+          <textarea id="message" rows="4" placeholder="Tell us about your project, timeline, and goals..." required></textarea>
         </div>
         <button type="submit" class="form-submit" id="submitBtn"><span>Send Message</span><span>&#8594;</span></button>
         <p class="form-note">We reply at the earliest. No spam, ever.</p>
