@@ -554,7 +554,10 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
 
 <script>
 var navLinks;
-function toggleNav(){navLinks.classList.toggle('open');}
+function toggleNav(){
+  if(!navLinks) navLinks=document.getElementById('navLinks');
+  navLinks.classList.toggle('open');
+}
 
 document.addEventListener('DOMContentLoaded',function(){
 document.body.classList.add('js-ready');
