@@ -197,11 +197,33 @@ nav { position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);displa
 .nav-links a:hover::after { width:100%; }
 .nav-links a.nav-active { color:var(--white); }
 .nav-links a.nav-active::after { width:100%; }
+.nav-links>li>a { font-size:0.78rem;font-weight:500;color:var(--muted);letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s;position:relative; }
+.nav-links>li>a::after { content:'';position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--green);transition:width 0.25s;border-radius:1px; }
+.nav-links>li>a:hover { color:var(--white); }
+.nav-links>li>a:hover::after { width:100%; }
 .nav-cta { background:var(--green)!important;color:var(--navy)!important;padding:0.45rem 1rem!important;border-radius:6px;font-weight:600!important;text-transform:none!important;letter-spacing:0!important;font-size:0.8rem!important; }
 .nav-cta::after { display:none!important; }
 .nav-cta:hover { background:#00e060!important; }
 .hamburger { display:none;flex-direction:column;gap:5px;cursor:pointer; }
-.hamburger span { display:block;width:24px;height:2px;background:var(--white);border-radius:1px; }
+.hamburger span { display:block;width:24px;height:2px;background:var(--white);border-radius:1px;transition:transform 0.3s,opacity 0.3s; }
+/* DROPDOWN */
+.nav-dropdown{position:relative}
+.nav-dropdown>a{display:flex;align-items:center;gap:0.35rem;cursor:pointer}
+.dropdown-arrow{width:10px;height:10px;opacity:0.5;transition:transform 0.2s,opacity 0.2s;flex-shrink:0}
+.nav-dropdown.open .dropdown-arrow{opacity:1;transform:rotate(180deg)}
+.dropdown-menu{display:none;position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);background:rgba(7,9,26,0.97);border:1px solid var(--border);border-radius:10px;padding:0.5rem;min-width:200px;backdrop-filter:blur(16px);box-shadow:0 16px 40px rgba(0,0,0,0.4);z-index:200}
+.nav-dropdown.open .dropdown-menu{display:block}
+.dropdown-menu li{list-style:none}
+.dropdown-menu a{display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;font-weight:500;color:var(--muted);letter-spacing:0.04em;text-transform:uppercase;padding:0.55rem 0.85rem;border-radius:6px;transition:background 0.15s,color 0.15s;white-space:nowrap}
+.dropdown-menu a::after{display:none!important}
+.dropdown-menu a:hover{background:rgba(255,255,255,0.06);color:var(--white)}
+.dropdown-divider{height:1px;background:var(--border);margin:0.3rem 0.5rem}
+.dropdown-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}
+.dot-blue{background:#6ea6ff}
+.dot-purple{background:#b794ff}
+.dot-orange{background:#ffb347}
+.nav-active{color:var(--white)!important}
 
 /* HERO BANNER */
 .faq-hero {
@@ -412,6 +434,9 @@ footer { background: var(--navy2); border-top: 1px solid var(--border); padding:
   .nav-links { display:none;flex-direction:column; }
   .nav-links.open { display:flex;position:fixed;top:var(--nav-h);left:0;right:0;background:rgba(7,9,26,0.98);padding:2rem;border-bottom:1px solid var(--border);z-index:99;gap:1.5rem; }
   .hamburger { display:flex; }
+  .dropdown-menu{position:static;transform:none;background:transparent;border:none;box-shadow:none;padding:0;backdrop-filter:none;margin-top:0.75rem;padding-left:0.75rem;border-left:2px solid var(--border) !important}
+  .dropdown-menu a{padding:0.3rem 0.5rem}
+  .nav-dropdown>a{width:100%;justify-content:space-between}
 }
 @media(max-width:640px) {
   .faq-cta { flex-direction: column; }
@@ -428,13 +453,39 @@ footer { background: var(--navy2); border-top: 1px solid var(--border); padding:
   <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="evoAI" style="height:38px;width:auto;"></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html#home">Home</a></li>
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#services">Services</a></li>
-    <li><a href="index.html#how">How We Work</a></li>
-    <li><a href="faq.html" class="nav-active">FAQ</a></li>
+    <li class="nav-dropdown" id="dropdown1">
+      <a href="#">What We Do
+        <svg class="dropdown-arrow" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="index.html#services"><span class="dropdown-dot dot-green"></span>Services</a></li>
+        <li><a href="index.html#who"><span class="dropdown-dot dot-green"></span>Who We Work With</a></li>
+        <li><a href="index.html#engagement"><span class="dropdown-dot dot-blue"></span>Engagement</a></li>
+        <li><a href="index.html#tech"><span class="dropdown-dot dot-purple"></span>Capabilities</a></li>
+      </ul>
+    </li>
+    <li class="nav-dropdown" id="dropdown2">
+      <a href="#">Company
+        <svg class="dropdown-arrow" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="index.html#about"><span class="dropdown-dot dot-green"></span>About</a></li>
+        <li><a href="index.html#how"><span class="dropdown-dot dot-blue"></span>How We Work</a></li>
+        <li><a href="index.html#security"><span class="dropdown-dot dot-orange"></span>Security</a></li>
+      </ul>
+    </li>
+    <li class="nav-dropdown" id="dropdown3">
+      <a href="#">Resources
+        <svg class="dropdown-arrow" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href="index.html#cases"><span class="dropdown-dot dot-blue"></span>Case Studies</a></li>
+        <li><a href="faq.html" class="nav-active"><span class="dropdown-dot dot-purple"></span>FAQ</a></li>
+      </ul>
+    </li>
     <li><a href="index.html#contact" class="nav-cta">Contact Us</a></li>
   </ul>
-  <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- HERO -->
@@ -724,7 +775,10 @@ footer { background: var(--navy2); border-top: 1px solid var(--border); padding:
       <li><a href="index.html#home">Home</a></li>
       <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#services">Services</a></li>
-      <li><a href="index.html#how">How We Work</a></li>
+      <li><a href="index.html#engagement">Engagement</a></li>
+      <li><a href="index.html#tech">Capabilities</a></li>
+      <li><a href="index.html#security">Security</a></li>
+      <li><a href="index.html#cases">Case Studies</a></li>
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
@@ -760,10 +814,49 @@ footer { background: var(--navy2); border-top: 1px solid var(--border); padding:
 </footer>
 
 <script>
-// Nav hamburger
-function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
-document.querySelectorAll('.nav-links a').forEach(function(a) {
-  a.addEventListener('click', function() { document.getElementById('navLinks').classList.remove('open'); });
+// Nav
+var navLinks = document.getElementById('navLinks');
+function toggleNav(){navLinks.classList.toggle('open');}
+var hamburger=document.getElementById('hamburger');
+if(hamburger){hamburger.addEventListener('touchend',function(e){e.preventDefault();toggleNav();});}
+
+// Handle multiple dropdowns
+var dropdowns=document.querySelectorAll('.nav-dropdown');
+dropdowns.forEach(function(dropdownParent){
+  var dropdownToggle=dropdownParent.querySelector(':scope>a');
+  function handleToggle(e){
+    e.preventDefault();
+    e.stopPropagation();
+    var isOpen=dropdownParent.classList.contains('open');
+    dropdowns.forEach(function(d){d.classList.remove('open');});
+    if(!isOpen) dropdownParent.classList.add('open');
+  }
+  dropdownToggle.addEventListener('click',handleToggle);
+  dropdownToggle.addEventListener('touchend',function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    var isOpen=dropdownParent.classList.contains('open');
+    dropdowns.forEach(function(d){d.classList.remove('open');});
+    if(!isOpen) dropdownParent.classList.add('open');
+  });
+  dropdownParent.querySelectorAll('.dropdown-menu a').forEach(function(a){
+    a.addEventListener('click',function(){
+      dropdowns.forEach(function(d){d.classList.remove('open');});
+      navLinks.classList.remove('open');
+    });
+  });
+});
+document.addEventListener('click',function(e){
+  dropdowns.forEach(function(d){if(!d.contains(e.target))d.classList.remove('open');});
+});
+document.addEventListener('touchend',function(e){
+  dropdowns.forEach(function(d){if(!d.contains(e.target))d.classList.remove('open');});
+});
+document.querySelectorAll('.nav-links>li>a:not(.nav-dropdown>a)').forEach(function(a){
+  a.addEventListener('click',function(){
+    navLinks.classList.remove('open');
+    dropdowns.forEach(function(d){d.classList.remove('open');});
+  });
 });
 
 // Accordion
