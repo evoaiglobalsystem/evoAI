@@ -864,7 +864,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
       <div>
 		  <div class="contact-item reveal d1">
 			<div class="contact-icon">&#128231;</div>
-			<div><h3>Email us</h3><p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="264f48404966435049474f414a4944474a08474f">[email&#160;protected]</a></p></div>
+			<div><h3>Email us</h3><p>info@evoaiglobal.ai</div>
 		  </div>
 		  <div class="contact-item reveal d2">
 			<div class="contact-icon">&#128172;</div>
@@ -915,7 +915,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:2.5rem
         <button type="submit" class="form-submit" id="submitBtn"><span>Send Message</span><span>&#8594;</span></button>
         <p class="form-note">We reply at the earliest. No spam, ever.</p>
         <div class="form-msg success" id="successMsg">&#10003; &nbsp;Message sent! We'll get back to you as soon as possible.</div>
-        <div class="form-msg error" id="errorMsg">Something went wrong. Please email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d5bcbbb3ba95b0a3bab4bcb2b9bab7b4b9fbb4bc">[email&#160;protected]</a> directly.</div>
+        <div class="form-msg error" id="errorMsg">Something went wrong. Please email info@evoaiglobal.ai directly.</div>
       </form>
     </div>
   </div>
@@ -1082,4 +1082,17 @@ function handleSubmit(e){
       document.getElementById('contactForm').reset();
     }else{
       document.getElementById('errorMsg').style.display='block';
-      document.getElemen
+      document.getElementById('successMsg').style.display='none';
+    }
+    btn.innerHTML='<span>Send Message</span><span>&#8594;</span>';
+    btn.disabled=false;
+  })
+  .catch(function(){
+    document.getElementById('errorMsg').style.display='block';
+    btn.innerHTML='<span>Send Message</span><span>&#8594;</span>';
+    btn.disabled=false;
+  });
+}
+</script>
+</body>
+</html>
